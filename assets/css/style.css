@@ -271,8 +271,8 @@ p { margin: 0 0 1em; }
 
 .register-body { min-width: 0; }
 
-/* Content that has no margin label still lines up with the body column */
-.body-col { margin-left: calc(var(--label-col) + var(--gap)); max-width: var(--body-max); }
+/* Content without a margin label: keeps a readable line length, aligned left */
+.body-col { max-width: var(--body-max); }
 .body-col-wide { max-width: none; }
 
 @media (max-width: 760px) {
@@ -283,25 +283,16 @@ p { margin: 0 0 1em; }
 /* ---------- Page heads ---------- */
 
 .page-head {
-  display: grid;
-  grid-template-columns: var(--label-col) minmax(0, var(--body-max));
-  column-gap: var(--gap);
   padding-block: clamp(3rem, 7vw, 5rem) 2rem;
 }
 .page-head h1 {
-  grid-column: 1 / -1;
   font-weight: 800;
   font-size: clamp(2.3rem, 5.5vw, 3.4rem);
   letter-spacing: -0.01em;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
-.page-head .lede { grid-column: 2; font-size: 1.15rem; }
+.page-head .lede { max-width: var(--body-max); font-size: 1.15rem; }
 .page-head .lede p:last-child { margin-bottom: 0; }
-
-@media (max-width: 760px) {
-  .page-head { grid-template-columns: 1fr; }
-  .page-head .lede { grid-column: 1; }
-}
 
 /* ---------- Prose ---------- */
 
