@@ -1,10 +1,11 @@
 - name: Joshua T. Schnell
   role: Director
-  bio: ""
-  photo: ""
   link: /
-- name: "[Name]"
-  role: "[Graduate student, undergraduate researcher, collaborator...]"
-  bio: "[One sentence on their research.]"
-  photo: ""
-  link: ""
+- name: Yolanda Yuan
+  role: PhD Student
+  bio: Sacrifice, Ritual Violence, Weaning, Genomic Analysis
+  photo: /assets/uploads/yolanda 2-700x537-0_605-1870_1434.jpg
+- name: Melissa Teja
+  role: PhD Student
+  bio: Human-Environment Interactions, Isotope Analysis, Health and Diet
+  photo: /assets/uploads/original-F8F5634F-7277-42E1-BC65-7F7B45665151-700x537-456_59-1592_1221.jpeg
