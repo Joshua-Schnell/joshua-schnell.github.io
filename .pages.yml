@@ -1,0 +1,270 @@
+# Pages CMS configuration (https://pagescms.org)
+# This file defines the editing dashboard. Each entry below becomes
+# a section in the dashboard's sidebar.
+
+media:
+  input: assets/uploads
+  output: /assets/uploads
+
+content:
+  # ---------- Pages ----------
+  - name: home
+    label: Home page
+    type: file
+    path: index.md
+    fields:
+      - name: title
+        label: Page title
+        type: string
+      - name: body
+        label: About (bio shown on the home page)
+        type: rich-text
+
+  - name: profile
+    label: Name, contact, and photo
+    type: file
+    path: _data/profile.yml
+    fields:
+      - name: name
+        label: Name
+        type: string
+      - name: title
+        label: Position
+        type: string
+      - name: affiliation
+        label: Institution
+        type: string
+      - name: affiliation_url
+        label: Institution website
+        type: string
+      - name: tagline
+        label: Tagline (large sentence under your name on the home page)
+        type: text
+      - name: email
+        label: Email
+        type: string
+      - name: office
+        label: Office address
+        type: text
+      - name: headshot
+        label: Headshot
+        type: image
+      - name: profiles
+        label: Online profiles (shown on the contact page)
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Name of site
+            type: string
+          - name: url
+            label: Link
+            type: string
+
+  - name: research_page
+    label: Research page intro
+    type: file
+    path: research.md
+    fields:
+      - name: title
+        label: Page title
+        type: string
+      - name: body
+        label: Introduction
+        type: rich-text
+
+  - name: projects
+    label: Research projects
+    type: file
+    path: _data/projects.yml
+    list: true
+    fields:
+      - name: title
+        label: Project title
+        type: string
+      - name: status
+        label: Status or dates (shown in the margin)
+        type: string
+      - name: summary
+        label: Summary
+        type: rich-text
+      - name: image
+        label: Image (optional)
+        type: image
+      - name: link
+        label: Link (optional)
+        type: string
+      - name: link_label
+        label: Link text, e.g. "Read the article"
+        type: string
+      - name: featured
+        label: Show on the home page
+        type: boolean
+
+  - name: cv_page
+    label: CV
+    type: file
+    path: cv.md
+    fields:
+      - name: title
+        label: Page title
+        type: string
+      - name: cv_pdf
+        label: CV PDF
+        type: file
+      - name: cv_updated
+        label: Last updated (e.g. "November 2026")
+        type: string
+      - name: body
+        label: Highlights shown above the PDF
+        type: rich-text
+
+  - name: media_page
+    label: Media page intro
+    type: file
+    path: media.md
+    fields:
+      - name: title
+        label: Page title
+        type: string
+      - name: body
+        label: Introduction
+        type: rich-text
+
+  - name: media
+    label: Media items
+    type: file
+    path: _data/media.yml
+    list: true
+    fields:
+      - name: year
+        label: Year
+        type: string
+      - name: title
+        label: Title
+        type: string
+      - name: outlet
+        label: Outlet or venue
+        type: string
+      - name: type
+        label: Type
+        type: select
+        options:
+          values: [Interview, Talk, Article, Podcast, Video, Press]
+      - name: url
+        label: Link
+        type: string
+
+  - name: teaching_page
+    label: Teaching page intro
+    type: file
+    path: teaching.md
+    fields:
+      - name: title
+        label: Page title
+        type: string
+      - name: body
+        label: Introduction
+        type: rich-text
+
+  - name: courses
+    label: Courses and syllabi
+    type: file
+    path: _data/courses.yml
+    list: true
+    fields:
+      - name: code
+        label: Course number
+        type: string
+      - name: title
+        label: Course title
+        type: string
+      - name: terms
+        label: Terms taught
+        type: string
+      - name: description
+        label: Description
+        type: rich-text
+      - name: syllabus
+        label: Syllabus (PDF)
+        type: file
+
+  - name: lab_page
+    label: MesoBIO Lab page
+    type: file
+    path: lab.md
+    fields:
+      - name: title
+        label: Page title
+        type: string
+      - name: body
+        label: Lab description
+        type: rich-text
+
+  - name: lab_people
+    label: Lab people
+    type: file
+    path: _data/lab_people.yml
+    list: true
+    fields:
+      - name: name
+        label: Name
+        type: string
+      - name: role
+        label: Role
+        type: string
+      - name: bio
+        label: One-sentence bio
+        type: text
+      - name: photo
+        label: Photo (optional)
+        type: image
+      - name: link
+        label: Personal page (optional)
+        type: string
+
+  - name: related
+    label: Related sites and tools
+    type: file
+    path: _data/related.yml
+    list: true
+    fields:
+      - name: name
+        label: Name
+        type: string
+      - name: description
+        label: Description
+        type: rich-text
+      - name: url
+        label: Link (leave empty to show "Launching soon")
+        type: string
+      - name: kind
+        label: Kind ("tool" also appears on the home page)
+        type: select
+        options:
+          values: [tool, project, institution]
+
+  - name: contact_page
+    label: Contact page note
+    type: file
+    path: contact.md
+    fields:
+      - name: title
+        label: Page title
+        type: string
+      - name: body
+        label: Note above your email
+        type: rich-text
+
+  - name: navigation
+    label: Menu
+    type: file
+    path: _data/navigation.yml
+    list: true
+    fields:
+      - name: title
+        label: Menu label
+        type: string
+      - name: url
+        label: Page address, e.g. /research/
+        type: string
