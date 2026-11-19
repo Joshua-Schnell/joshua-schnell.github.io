@@ -1,12 +1,24 @@
-- code: "ANTH [number]"
-  title: "[Course title]"
-  terms: "[e.g. Fall 2025, Spring 2026]"
-  description: |-
-    [A two- or three-sentence description of the course, in the voice you'd use with students.]
-  syllabus: ""
-- code: "ANTH [number]"
-  title: "[Course title]"
-  terms: "[Terms taught]"
-  description: |-
-    [Course description.]
-  syllabus: ""
+- code: ANTH 1805
+  title: Bioarchaeology Methods
+  terms: Fall 2026, Fall 2028
+  description: ANTH 1805 is a methods-focused course providing students with
+    hands-on experience in the field- and lab-based methods of bioarchaeology.
+    The primary graded assignments are a variety of lab exercises, including
+    written syntheses, interpretations, and reflections based on those
+    assignments. Students will gain experience with age-at-death estimation, sex
+    estimation, stature estimation, basic skeletal inventory and reconstruction,
+    imaging and documentation, fragmentary element analysis, digital osteometry,
+    3D scanning and printing, burial excavation, and field recording. 
+  syllabus: /assets/uploads/ANTH1805_FS26_v2.pdf
+- code: ANTH 0680
+  title: Intro to Biological Anthropology
+  terms: Fall 2025, Fall 2026, Spring 2028
+  description: This course explores what it means to be human from evolutionary
+    and biocultural perspectives. First, course participants learn the basic
+    principles of evolutionary theory. We further explore the ecology and
+    behavior of living primates. This includes addressing the biological
+    adaptations in our monkey and ape relatives and across the human species. We
+    also focus on what we have learned and can learn from the skeletal and
+    fossil records, exploring the behavioral and biological characteristics of
+    the human past and our evolutionary relatives.
+  syllabus: /assets/uploads/ANTH0680_FS26_v2.4.pdf
