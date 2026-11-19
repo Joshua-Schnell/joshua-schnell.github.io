@@ -1,0 +1,80 @@
+/* Projects: tile grid and project detail pages */
+
+.tiles {
+  list-style: none;
+  margin: 0;
+  padding: 2.5rem 0 0;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16.5rem, 1fr));
+  gap: 3rem 2.25rem;
+}
+
+.tile-link {
+  display: block;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.tile-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+  background: var(--surface);
+}
+
+/* No photo yet: show a patch of the excavation grid */
+.tile-image-empty {
+  border: 1px solid var(--rule);
+  background-color: var(--surface);
+  background-image:
+    linear-gradient(to right, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(to right, var(--grid-minor) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-minor) 1px, transparent 1px);
+  background-size: 48px 48px, 48px 48px, 12px 12px, 12px 12px;
+  background-position: -1px -1px;
+}
+
+.tile-title {
+  font-size: 1.3rem;
+  line-height: 1.2;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+}
+.tile-link:hover .tile-title,
+.tile-link:focus-visible .tile-title { text-decoration-color: var(--accent); }
+
+.tile .meta { margin-top: 0.35rem; }
+.tile-summary { margin: 0.5rem 0 0; line-height: 1.5; }
+
+/* Detail page */
+.project-head { padding-bottom: 2.5rem; }
+.project-head .back {
+  grid-column: 1 / -1;
+  margin: 0 0 1rem;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.project-head h1 { margin-bottom: 0.5rem; max-width: 22ch; }
+.project-status { grid-column: 1 / -1; font-size: 1.05rem; }
+
+.project-figure { margin: 0 auto 1rem; }
+.project-figure img {
+  width: 100%;
+  max-height: 32rem;
+  object-fit: cover;
+  border-radius: 2px;
+}
+.project-figure figcaption { margin-top: 0.6rem; }
+
+.pub-list { list-style: none; margin: 0; padding: 0; }
+.pub-list li { margin-bottom: 1.25rem; }
+.pub-list li p { margin: 0; }
+.pub-list .more { margin-top: 0.35rem; }

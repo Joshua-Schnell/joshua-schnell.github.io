@@ -1,0 +1,75 @@
+---
+layout: default
+---
+<link rel="stylesheet" href="{{ '/assets/css/projects.css' | relative_url }}">
+<header class="wrap page-head project-head">
+  <p class="back"><a href="{{ '/projects/' | relative_url }}">All projects</a></p>
+  <h1>{{ page.title }}</h1>
+  {%- if page.status and page.status != "" %}
+  <p class="meta project-status">{{ page.status }}</p>
+  {%- endif %}
+</header>
+
+{%- if page.image and page.image != "" %}
+<figure class="wrap project-figure">
+  <img src="{{ page.image | relative_url }}" alt="{{ page.image_caption | default: page.title }}">
+  {%- if page.image_caption and page.image_caption != "" %}
+  <figcaption class="meta">{{ page.image_caption }}</figcaption>
+  {%- endif %}
+</figure>
+{%- endif %}
+
+<section class="wrap register">
+  <h2 class="register-label">About</h2>
+  <div class="register-body prose">{{ content }}</div>
+</section>
+
+{%- if page.collaborators.size > 0 %}
+<section class="wrap register">
+  <h2 class="register-label">Collaborators</h2>
+  <ul class="register-body entry-list">
+    {%- for c in page.collaborators %}
+    <li>
+      <h3>{% if c.url and c.url != "" %}<a href="{{ c.url }}">{{ c.name }}</a>{% else %}{{ c.name }}{% endif %}</h3>
+      {%- if c.affiliation and c.affiliation != "" %}
+      <p class="meta">{{ c.affiliation }}</p>
+      {%- endif %}
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}
+
+{%- if page.publications.size > 0 %}
+<section class="wrap register">
+  <h2 class="register-label">Publications</h2>
+  <ul class="register-body pub-list">
+    {%- for pub in page.publications %}
+    <li>
+      {{ pub.citation | markdownify }}
+      {%- if pub.url and pub.url != "" %}
+      <p class="more"><a href="{{ pub.url }}">Read it</a></p>
+      {%- endif %}
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}
+
+{%- if page.funding and page.funding != "" %}
+<section class="wrap register">
+  <h2 class="register-label">Funding</h2>
+  <div class="register-body prose">{{ page.funding | markdownify }}</div>
+</section>
+{%- endif %}
+
+{%- if page.links.size > 0 %}
+<section class="wrap register">
+  <h2 class="register-label">Links</h2>
+  <ul class="register-body plain-list">
+    {%- for l in page.links %}
+    <li>{% if l.url and l.url != "" %}<a href="{{ l.url }}">{{ l.label }}</a>{% else %}{{ l.label }} <span class="meta">(coming soon)</span>{% endif %}</li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}

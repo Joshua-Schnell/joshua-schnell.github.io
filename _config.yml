@@ -12,14 +12,23 @@ plugins:
 exclude:
   - README.md
 
+# Each project is its own file in the _projects folder,
+# with its own page at /projects/file-name/
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
 # Which layout each page uses (so page files only need a title).
 defaults:
   - scope: { path: "" }
     values: { layout: page }
   - scope: { path: "index.md" }
     values: { layout: home }
-  - scope: { path: "research.md" }
-    values: { layout: research }
+  - scope: { path: "projects.md" }
+    values: { layout: projects }
+  - scope: { path: "", type: "projects" }
+    values: { layout: project }
   - scope: { path: "cv.md" }
     values: { layout: cv }
   - scope: { path: "media.md" }

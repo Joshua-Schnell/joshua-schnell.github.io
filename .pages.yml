@@ -61,10 +61,10 @@ content:
             label: Link
             type: string
 
-  - name: research_page
-    label: Research page intro
+  - name: projects_page
+    label: Projects page intro
     type: file
-    path: research.md
+    path: projects.md
     fields:
       - name: title
         label: Page title
@@ -74,32 +74,77 @@ content:
         type: rich-text
 
   - name: projects
-    label: Research projects
-    type: file
-    path: _data/projects.yml
-    list: true
+    label: Projects
+    type: collection
+    path: _projects
+    filename: "{primary}.md"
+    view:
+      fields: [title, status, featured]
     fields:
       - name: title
         label: Project title
         type: string
+        required: true
       - name: status
-        label: Status or dates (shown in the margin)
+        label: Status or dates, e.g. "2022–present"
         type: string
-      - name: summary
-        label: Summary
-        type: rich-text
-      - name: image
-        label: Image (optional)
-        type: image
-      - name: link
-        label: Link (optional)
-        type: string
-      - name: link_label
-        label: Link text, e.g. "Read the article"
-        type: string
+      - name: order
+        label: Position on the Projects page (1 = first)
+        type: number
       - name: featured
         label: Show on the home page
         type: boolean
+      - name: image
+        label: Photo (shown on the tile and at the top of the project page)
+        type: image
+      - name: image_caption
+        label: Photo caption or credit
+        type: string
+      - name: summary
+        label: Short description for the tile (one or two sentences)
+        type: text
+      - name: body
+        label: Full description (project page)
+        type: rich-text
+      - name: collaborators
+        label: Collaborators
+        type: object
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+          - name: affiliation
+            label: Institution
+            type: string
+          - name: url
+            label: Link (optional)
+            type: string
+      - name: publications
+        label: Publications
+        type: object
+        list: true
+        fields:
+          - name: citation
+            label: Citation (use *asterisks* for italics)
+            type: text
+          - name: url
+            label: Link (DOI or PDF, optional)
+            type: string
+      - name: funding
+        label: Funding (optional)
+        type: text
+      - name: links
+        label: Links (project website, app, data)
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Link text
+            type: string
+          - name: url
+            label: Address
+            type: string
 
   - name: cv_page
     label: CV

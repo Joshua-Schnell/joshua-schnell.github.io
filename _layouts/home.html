@@ -24,17 +24,16 @@ layout: default
 <section class="wrap register">
   <h2 class="register-label">Current work</h2>
   <div class="register-body">
+    {%- assign featured = site.projects | where: "featured", true | sort: "order", "last" %}
     <ul class="entry-list">
-      {%- for p in site.data.projects %}
-      {%- if p.featured %}
+      {%- for p in featured %}
       <li>
-        <h3>{{ p.title }}</h3>
+        <h3><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
         <p class="meta">{{ p.status }}</p>
       </li>
-      {%- endif %}
       {%- endfor %}
     </ul>
-    <p class="more"><a href="{{ '/research/' | relative_url }}">See all research</a></p>
+    <p class="more"><a href="{{ '/projects/' | relative_url }}">See all projects</a></p>
   </div>
 </section>
 

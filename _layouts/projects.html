@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<link rel="stylesheet" href="{{ '/assets/css/projects.css' | relative_url }}">
+{% include page-head.html %}
+<div class="wrap">
+  {%- assign projects = site.projects | sort: "order", "last" %}
+  <ul class="tiles">
+    {%- for p in projects %}
+    <li class="tile">
+      <a class="tile-link" href="{{ p.url | relative_url }}">
+        {%- if p.image and p.image != "" %}
+        <img class="tile-image" src="{{ p.image | relative_url }}" alt="" loading="lazy">
+        {%- else %}
+        <span class="tile-image tile-image-empty" aria-hidden="true"></span>
+        {%- endif %}
+        <h2 class="tile-title">{{ p.title }}</h2>
+      </a>
+      {%- if p.status and p.status != "" %}
+      <p class="meta">{{ p.status }}</p>
+      {%- endif %}
+      {%- if p.summary and p.summary != "" %}
+      <p class="tile-summary">{{ p.summary }}</p>
+      {%- endif %}
+    </li>
+    {%- endfor %}
+  </ul>
+</div>
