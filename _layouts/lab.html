@@ -2,7 +2,12 @@
 layout: default
 ---
 <header class="wrap page-head">
-  <h1>{{ page.title }}</h1>
+  <h1 style="margin-bottom: 1.75rem;">
+    <picture>
+      <source srcset="{{ '/assets/uploads/MayaLAB-logo-web-dark.svg' | relative_url }}" media="(prefers-color-scheme: dark)">
+      <img src="{{ '/assets/uploads/MayaLAB-logo-web.svg' | relative_url }}" alt="MayaLAB, Lab for Anthropological Bioarchaeology of the Maya" width="694" height="146" style="display: block; width: 100%; max-width: 32rem; height: auto;">
+    </picture>
+  </h1>
 </header>
 <div class="wrap">
   <div class="prose lab-text body-col">{{ content }}</div>
