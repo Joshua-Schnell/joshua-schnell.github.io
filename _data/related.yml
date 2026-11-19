@@ -1,0 +1,16 @@
+# Leave url empty for tools that aren't online yet; the site will say "Launching soon".
+- name: Project TOMBS
+  description: |-
+    [One or two sentences on what Project TOMBS does and who it's for.]
+  url: ""
+  kind: tool
+- name: MesoBIO database
+  description: |-
+    [One or two sentences on the MesoBIO database.]
+  url: ""
+  kind: tool
+- name: Department of Anthropology, University of Pittsburgh
+  description: |-
+    My academic home.
+  url: https://www.anthropology.pitt.edu/
+  kind: institution

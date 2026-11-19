@@ -1,0 +1,449 @@
+/* ==========================================================
+   joshuaschnell.com
+   Palette: limestone, ink, and Maya blue.
+   Layout: a "register" — catalog details in the left margin,
+   the entry itself in the main column, like a field catalog.
+   ========================================================== */
+
+:root {
+  --bg: #EDF0EC;          /* limestone */
+  --surface: #F6F8F5;
+  --ink: #1C2624;
+  --muted: #55625E;
+  --accent: #1F6E7D;      /* Maya blue, darkened for text contrast */
+  --accent-strong: #134E59;
+  --rule: #C5CFCA;
+  --grid-minor: rgba(31, 110, 125, 0.07);
+  --grid-major: rgba(31, 110, 125, 0.2);
+
+  --serif: "Alegreya", Georgia, "Times New Roman", serif;
+  --sans: "Alegreya Sans", "Gill Sans", "Segoe UI", system-ui, sans-serif;
+
+  --cell: 64px;           /* excavation grid unit in the hero */
+  --label-col: 12.5rem;   /* margin column width */
+  --gap: 3rem;
+  --body-max: 40rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg: #131B1A;
+    --surface: #1A2423;
+    --ink: #E1E7E3;
+    --muted: #9CABA6;
+    --accent: #7EC3CF;
+    --accent-strong: #A9DCE4;
+    --rule: #2F3D3B;
+    --grid-minor: rgba(126, 195, 207, 0.05);
+    --grid-major: rgba(126, 195, 207, 0.15);
+  }
+}
+
+/* ---------- Base ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-size: 118.75%; /* 19px; Alegreya has a small x-height */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif);
+  line-height: 1.6;
+  font-kerning: normal;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+main { flex: 1; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+a:hover { text-decoration-thickness: 2px; color: var(--accent-strong); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+h1, h2, h3 { line-height: 1.15; margin: 0; font-weight: 700; }
+
+p { margin: 0 0 1em; }
+
+.wrap {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  padding: 0.5rem 0.9rem;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: var(--sans);
+  font-weight: 700;
+  z-index: 10;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ---------- Header ---------- */
+
+.site-header { border-bottom: 1px solid var(--rule); }
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 4.25rem;
+  flex-wrap: wrap;
+}
+
+.site-name {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.35rem;
+}
+
+.site-nav a {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--ink);
+  text-decoration: none;
+  padding-block: 0.25rem;
+}
+.site-nav a:hover { color: var(--accent); }
+.site-nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.4em;
+}
+
+.nav-toggle {
+  display: none;
+  font: 700 0.95rem var(--sans);
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+
+@media (max-width: 1060px) {
+  .js .nav-toggle { display: inline-block; }
+  .js .site-nav { display: none; width: 100%; }
+  .js .site-nav.is-open { display: block; }
+  .js .site-nav ul { flex-direction: column; gap: 0; padding-bottom: 1rem; }
+  .js .site-nav a { display: block; padding-block: 0.55rem; }
+}
+
+/* ---------- Hero: the site datum ---------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--rule);
+  padding-block: clamp(4rem, 11vw, 8rem) clamp(3rem, 8vw, 5.5rem);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(to right, var(--grid-minor) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-minor) 1px, transparent 1px);
+  background-size:
+    var(--cell) var(--cell),
+    var(--cell) var(--cell),
+    calc(var(--cell) / 4) calc(var(--cell) / 4),
+    calc(var(--cell) / 4) calc(var(--cell) / 4);
+  background-position: right top;
+  -webkit-mask-image: linear-gradient(to left, #000 15%, transparent 80%);
+          mask-image: linear-gradient(to left, #000 15%, transparent 80%);
+  animation: grid-in 1.4s ease-out both;
+}
+
+/* Survey datum marker, sitting on a grid intersection */
+.datum {
+  position: absolute;
+  top: calc(var(--cell) * 2 - 10px);
+  right: calc(var(--cell) * 2 - 10px);
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  background: conic-gradient(var(--accent) 0 25%, transparent 0 50%, var(--accent) 0 75%, transparent 0);
+  animation: datum-in 0.5s 0.9s ease-out both;
+}
+
+@media (max-width: 760px) {
+  .datum { top: calc(var(--cell) - 10px); right: calc(var(--cell) - 10px); }
+}
+
+@keyframes grid-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes datum-in { from { opacity: 0; transform: scale(0.4); } to { opacity: 1; transform: scale(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before, .datum { animation: none; }
+}
+
+.hero-inner { position: relative; }
+
+.hero-name {
+  font-weight: 800;
+  font-size: clamp(3rem, 9.5vw, 6.25rem);
+  line-height: 0.92;
+  letter-spacing: -0.015em;
+  max-width: 9ch;
+  margin-bottom: 1.75rem;
+}
+
+.hero-tagline {
+  font-style: italic;
+  font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+  line-height: 1.35;
+  max-width: 28ch;
+  margin-bottom: 1.25rem;
+}
+
+.hero-affil {
+  font-family: var(--sans);
+  font-weight: 500;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ---------- Register layout ---------- */
+
+.register {
+  display: grid;
+  grid-template-columns: var(--label-col) minmax(0, var(--body-max));
+  column-gap: var(--gap);
+  padding-block: 2.5rem;
+  border-top: 1px solid var(--rule);
+}
+.hero + .register { border-top: 0; }
+
+.register-label {
+  margin: 0;
+  padding-top: 0.2rem;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.35;
+  color: var(--ink);
+}
+.register-label.meta { color: var(--muted); font-weight: 500; }
+
+.register-body { min-width: 0; }
+
+/* Content that has no margin label still lines up with the body column */
+.body-col { margin-left: calc(var(--label-col) + var(--gap)); max-width: var(--body-max); }
+.body-col-wide { max-width: none; }
+
+@media (max-width: 760px) {
+  .register { grid-template-columns: 1fr; row-gap: 0.6rem; padding-block: 2rem; }
+  .body-col { margin-left: 0; }
+}
+
+/* ---------- Page heads ---------- */
+
+.page-head {
+  display: grid;
+  grid-template-columns: var(--label-col) minmax(0, var(--body-max));
+  column-gap: var(--gap);
+  padding-block: clamp(3rem, 7vw, 5rem) 2rem;
+}
+.page-head h1 {
+  grid-column: 1 / -1;
+  font-weight: 800;
+  font-size: clamp(2.3rem, 5.5vw, 3.4rem);
+  letter-spacing: -0.01em;
+  margin-bottom: 1.25rem;
+}
+.page-head .lede { grid-column: 2; font-size: 1.15rem; }
+.page-head .lede p:last-child { margin-bottom: 0; }
+
+@media (max-width: 760px) {
+  .page-head { grid-template-columns: 1fr; }
+  .page-head .lede { grid-column: 1; }
+}
+
+/* ---------- Prose ---------- */
+
+.prose { max-width: var(--body-max); line-height: 1.65; }
+.prose h2 {
+  font-family: var(--sans);
+  font-size: 1.2rem;
+  margin: 2.25rem 0 0.6rem;
+}
+.prose h2:first-child { margin-top: 0; }
+.prose ul { padding-left: 1.2rem; }
+.prose li { margin-bottom: 0.35rem; }
+
+/* ---------- Lists of entries ---------- */
+
+.entry-list, .catalog, .plain-list, .people-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.entry-list li { margin-bottom: 1.4rem; }
+.entry-list li:last-child { margin-bottom: 0; }
+.entry-list h3 { font-size: 1.2rem; }
+.entry-list h3 a, .people-list h3 a { color: var(--ink); text-decoration-color: var(--accent); }
+.entry-text p { margin: 0.3rem 0 0; }
+
+.meta {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin: 0.2rem 0 0;
+}
+
+.catalog-item h2 { font-size: 1.55rem; margin-bottom: 0.75rem; }
+.catalog:first-child .catalog-item:first-child { border-top: 1px solid var(--rule); }
+
+.catalog-image {
+  width: 100%;
+  max-height: 22rem;
+  object-fit: cover;
+  border-radius: 2px;
+  margin: 0.25rem 0 1.25rem;
+}
+
+.more { margin: 1rem 0 0; }
+.more a { font-family: var(--sans); font-weight: 700; }
+
+.year {
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: 1.6rem;
+  line-height: 1;
+  font-variant-numeric: lining-nums;
+}
+
+.course-code { font-family: var(--sans); font-weight: 700; margin: 0; }
+
+.headshot {
+  float: right;
+  width: 11rem;
+  margin: 0.3rem 0 1rem 1.75rem;
+  border-radius: 3px;
+}
+@media (max-width: 560px) {
+  .headshot { float: none; width: 9rem; margin: 0 0 1.25rem; }
+}
+
+/* ---------- Buttons ---------- */
+
+.button {
+  display: inline-block;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  padding: 0.65rem 1rem;
+  border-radius: 3px;
+  background: var(--accent);
+  color: var(--bg);
+  text-decoration: none;
+}
+.button:hover { background: var(--accent-strong); color: var(--bg); }
+
+/* ---------- CV ---------- */
+
+.cv-embed object {
+  display: block;
+  width: 100%;
+  height: 85vh;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  margin-block: 0.5rem 4rem;
+}
+@media (max-width: 760px) { .cv-embed { display: none; } }
+
+/* ---------- Lab ---------- */
+
+.lab-text { padding-bottom: 2.5rem; }
+.people-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: 2rem 2.5rem;
+}
+.people-list h3 { font-size: 1.15rem; }
+.people-list p { margin: 0.35rem 0 0; }
+.person-photo {
+  width: 6rem;
+  height: 6rem;
+  object-fit: cover;
+  border-radius: 3px;
+  margin-bottom: 0.75rem;
+}
+
+/* ---------- Contact ---------- */
+
+.contact-email {
+  font-weight: 700;
+  font-size: clamp(1.5rem, 4.2vw, 2.4rem);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  padding-bottom: 2.5rem;
+  margin: 0;
+}
+address { font-style: normal; }
+.plain-list li { margin-bottom: 0.35rem; }
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--rule);
+  margin-top: 4rem;
+  padding-block: 2rem 2.5rem;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+}
+.footer-inner p { margin: 0; }

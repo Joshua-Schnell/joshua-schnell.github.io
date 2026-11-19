@@ -1,0 +1,20 @@
+---
+layout: default
+---
+{% include page-head.html %}
+<div class="wrap">
+  {%- assign groups = site.data.media | group_by: "year" %}
+  {%- for g in groups %}
+  <section class="register">
+    <h2 class="register-label year">{{ g.name }}</h2>
+    <ul class="register-body entry-list">
+      {%- for m in g.items %}
+      <li>
+        <h3>{% if m.url and m.url != "" %}<a href="{{ m.url }}">{{ m.title }}</a>{% else %}{{ m.title }}{% endif %}</h3>
+        <p class="meta">{{ m.type }}, {{ m.outlet }}</p>
+      </li>
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endfor %}
+</div>

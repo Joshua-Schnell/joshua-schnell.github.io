@@ -1,0 +1,12 @@
+- code: "ANTH [number]"
+  title: "[Course title]"
+  terms: "[e.g. Fall 2025, Spring 2026]"
+  description: |-
+    [A two- or three-sentence description of the course, in the voice you'd use with students.]
+  syllabus: ""
+- code: "ANTH [number]"
+  title: "[Course title]"
+  terms: "[Terms taught]"
+  description: |-
+    [Course description.]
+  syllabus: ""

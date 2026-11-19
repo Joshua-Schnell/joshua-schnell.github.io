@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<header class="wrap page-head">
+  <h1>{{ page.title }}</h1>
+</header>
+<div class="wrap register">
+  <div class="register-label">
+    <a class="button" href="{{ page.cv_pdf | relative_url }}">Download CV (PDF)</a>
+    {%- if page.cv_updated and page.cv_updated != "" %}
+    <p class="meta">Updated {{ page.cv_updated }}</p>
+    {%- endif %}
+  </div>
+  <div class="register-body prose">
+    {{ content }}
+  </div>
+</div>
+<div class="wrap cv-embed">
+  <div class="body-col body-col-wide">
+  <object data="{{ page.cv_pdf | relative_url }}" type="application/pdf" aria-label="CV of {{ site.data.profile.name }}">
+    <p>Your browser can't show the PDF here. <a href="{{ page.cv_pdf | relative_url }}">Download the CV</a> instead.</p>
+  </object>
+  </div>
+</div>

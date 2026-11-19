@@ -1,0 +1,26 @@
+---
+layout: default
+---
+<header class="wrap page-head">
+  <h1>{{ page.title }}</h1>
+</header>
+<div class="wrap">
+  <div class="prose lab-text body-col">{{ content }}</div>
+</div>
+<section class="wrap register people">
+  <h2 class="register-label">People</h2>
+  <ul class="register-body people-list">
+    {%- for person in site.data.lab_people %}
+    <li>
+      {%- if person.photo and person.photo != "" %}
+      <img class="person-photo" src="{{ person.photo | relative_url }}" alt="">
+      {%- endif %}
+      <h3>{% if person.link and person.link != "" %}<a href="{{ person.link | relative_url }}">{{ person.name }}</a>{% else %}{{ person.name }}{% endif %}</h3>
+      <p class="meta">{{ person.role }}</p>
+      {%- if person.bio and person.bio != "" %}
+      <p>{{ person.bio }}</p>
+      {%- endif %}
+    </li>
+    {%- endfor %}
+  </ul>
+</section>

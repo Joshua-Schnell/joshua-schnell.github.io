@@ -1,0 +1,25 @@
+---
+layout: default
+---
+{% include page-head.html %}
+<div class="wrap">
+  <ul class="catalog">
+    {%- for c in site.data.courses %}
+    <li class="register catalog-item">
+      <div class="register-label">
+        <p class="course-code">{{ c.code }}</p>
+        <p class="meta">{{ c.terms }}</p>
+      </div>
+      <div class="register-body">
+        <h2>{{ c.title }}</h2>
+        <div class="prose">{{ c.description | markdownify }}</div>
+        {%- if c.syllabus and c.syllabus != "" %}
+        <p class="more"><a href="{{ c.syllabus | relative_url }}">Download syllabus (PDF)</a></p>
+        {%- else %}
+        <p class="meta">Syllabus available on request.</p>
+        {%- endif %}
+      </div>
+    </li>
+    {%- endfor %}
+  </ul>
+</div>

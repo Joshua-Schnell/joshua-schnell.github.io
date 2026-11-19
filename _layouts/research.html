@@ -1,0 +1,23 @@
+---
+layout: default
+---
+{% include page-head.html %}
+<div class="wrap">
+  <ul class="catalog">
+    {%- for p in site.data.projects %}
+    <li class="register catalog-item">
+      <p class="register-label meta">{{ p.status }}</p>
+      <div class="register-body">
+        <h2>{{ p.title }}</h2>
+        {%- if p.image and p.image != "" %}
+        <img class="catalog-image" src="{{ p.image | relative_url }}" alt="">
+        {%- endif %}
+        <div class="prose">{{ p.summary | markdownify }}</div>
+        {%- if p.link and p.link != "" %}
+        <p class="more"><a href="{{ p.link | relative_url }}">{{ p.link_label | default: "Learn more" }}</a></p>
+        {%- endif %}
+      </div>
+    </li>
+    {%- endfor %}
+  </ul>
+</div>

@@ -1,0 +1,11 @@
+# List newest items first. Years are grouped automatically.
+- year: "[Year]"
+  title: "[Title of interview, talk, or article]"
+  outlet: "[Outlet or venue]"
+  type: Interview
+  url: ""
+- year: "2018"
+  title: Tubing
+  outlet: Maya Decipherment blog
+  type: Article
+  url: https://decipherment.wordpress.com/2018/05/12/tubing/

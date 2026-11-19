@@ -1,0 +1,22 @@
+---
+layout: default
+---
+{%- assign profile = site.data.profile %}
+{% include page-head.html %}
+<div class="wrap">
+  <p class="contact-email body-col"><a href="mailto:{{ profile.email }}">{{ profile.email }}</a></p>
+  <section class="register">
+    <h2 class="register-label">Office</h2>
+    <address class="register-body">{{ profile.office | newline_to_br }}</address>
+  </section>
+  <section class="register">
+    <h2 class="register-label">Elsewhere</h2>
+    <ul class="register-body plain-list">
+      {%- for p in profile.profiles %}
+      {%- if p.url and p.url != "" %}
+      <li><a href="{{ p.url }}">{{ p.label }}</a></li>
+      {%- endif %}
+      {%- endfor %}
+    </ul>
+  </section>
+</div>
