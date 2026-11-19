@@ -1,7 +1,7 @@
 ---
 title: CV
 cv_pdf: /assets/uploads/Schnell_CV.pdf
-cv_updated: May 2024
+cv_updated: October 2026
 ---
 ## Education
 
@@ -11,9 +11,8 @@ cv_updated: May 2024
 
 **BS, Anthropology**, Michigan State University, 2016.
 
-## Selected honors
+**BA, Religious Studies**, Michigan State University, 2016.
 
-- Jane C. Waldbaum Award, Archaeological Institute of America
-- Beinecke Scholarship, The Sperry Fund
 
-The full CV, with publications, grants, fieldwork, and service, is in the PDF.
+
+My full CV can be viewed below or downloaded from the button at left.
