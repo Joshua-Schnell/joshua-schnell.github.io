@@ -1,5 +1,7 @@
 - title: Home
   url: /
+- title: MayaLAB
+  url: /lab/
 - title: Research
   url: /research/
 - title: CV
@@ -8,8 +10,6 @@
   url: /media/
 - title: Teaching
   url: /teaching/
-- title: MesoBIO Lab
-  url: /lab/
 - title: Related sites
   url: /related/
 - title: Contact
